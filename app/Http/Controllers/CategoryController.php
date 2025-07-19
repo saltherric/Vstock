@@ -19,4 +19,13 @@ class CategoryController extends Controller
             ->get();
         return view('categories.index', $data);
     }
+
+    public function delete($id) {
+        $x = DB::table('categories')
+            ->where('id', $id)
+            ->update([
+                'active' => 0
+            ]);
+        return redirect()->route('category.index');
+    }
 }

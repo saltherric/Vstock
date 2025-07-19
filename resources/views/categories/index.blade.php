@@ -23,8 +23,8 @@
                             <td>{{$i++}}</td>
                             <td>{{$cat->name}}</td>
                             <td>
-                                <a href="#" class="btn btn-success btn-xs" title="Edit"><i class="fas fa-edit"></i></a>
-                                <a href="#" class="btn btn-danger btn-xs" title="Delete"><i class="fas fa-trash"></i></a>
+                                <a href="#" class="btn btn-success btn-xs mr-1" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a href="{{route('category.delete', $cat->id)}}" class="btn btn-danger btn-xs" title="Delete" onclick="return confirm('You want to delete?')"><i class="fas fa-trash"></i></a>
                             </td>
                         </tr> 
                     @endforeach
