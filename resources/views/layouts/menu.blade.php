@@ -1,3 +1,8 @@
+  <?php
+    $settings = array(
+      'category', 'user', 'role'
+    );
+  ?>
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -29,17 +34,17 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{in_array($active, $settings)?'menu-open':''}}">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-cog"></i>
               <p>
-                Setting
+                Settings
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('category.index')}}" class="nav-link">
+              <li class="nav-item}}" >
+                <a href="{{route('category.index')}}" class="nav-link {{$active=='category'?'active':''}}" >
                   <i class="fas fa-angle-right nav-icon"></i>
                   <p>Categories</p>
                 </a>
