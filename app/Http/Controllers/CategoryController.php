@@ -28,4 +28,12 @@ class CategoryController extends Controller
             ]);
         return redirect()->route('category.index');
     }
+
+    // public function edit($id) {
+    //     $x = DB::table('categories')
+    //         ->where('id', $id)
+    //         ->update([
+    //             'name' => 
+    //         ]);
+    // }
 }
