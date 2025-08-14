@@ -6,8 +6,10 @@
     Categories
 @endsection
 @section('content')
-   <div class="card">
+   <div class="card mt-2">
         <div class="card-body">
+            @component('coms.alert')
+            @endcomponent
             <table class="table table-bordered table-sm">
                 <thead>
                     <tr>

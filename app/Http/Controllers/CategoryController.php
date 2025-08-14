@@ -26,14 +26,12 @@ class CategoryController extends Controller
             ->update([
                 'active' => 0
             ]);
+        if ($x) {
+            session()->flash('success', config('app.del_success'));
+        } else {
+            session()->flash('error', config('app.del_error'));
+        }
         return redirect()->route('category.index');
     }
 
-    // public function edit($id) {
-    //     $x = DB::table('categories')
-    //         ->where('id', $id)
-    //         ->update([
-    //             'name' => 
-    //         ]);
-    // }
 }

@@ -14,7 +14,9 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-
+    'del_success' => ('Data has been deleted successfully!'),
+    'del_error' => ('Failed to deleted data, please check again!'),
+    
     /*
     |--------------------------------------------------------------------------
     | Application Environment
