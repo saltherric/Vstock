@@ -14,6 +14,8 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'success' => ('Data has been save successfully!'),
+    'error' => ('Failed to save data, please check again!'),
     'del_success' => ('Data has been deleted successfully!'),
     'del_error' => ('Failed to deleted data, please check again!'),
     

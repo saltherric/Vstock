@@ -6,7 +6,12 @@
     Categories
 @endsection
 @section('content')
-   <div class="card mt-2">
+<p class="my-1">
+    <a href="{{ route('category.create')}}" class="btn btn-success btn-sm">
+        <i class="fas fa-plus-circle"></i> Create
+    </a>
+</p>
+   <div class="card">
         <div class="card-body">
             @component('coms.alert')
             @endcomponent

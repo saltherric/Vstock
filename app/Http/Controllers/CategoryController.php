@@ -34,4 +34,25 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
+    public function create() {
+        return view('categories.create');
+    }
+
+    public function save(Request $r) {
+        $r->validate([
+            'name'=>'required|min:3|unique:categories'
+        ]);
+        $data = array(
+            'name' => $r->name
+        );
+        $i = DB::table('categories')->insert($data);
+        if($i) {
+            session()->flash('success', config('app.success'));
+            return redirect()->route('category.create');
+        } else {
+            session()->flash('error', config('app.error'));
+            return redirect()->route('category.create')
+            ->withInput();
+        }
+    }
 }
