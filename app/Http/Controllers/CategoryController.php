@@ -55,4 +55,13 @@ class CategoryController extends Controller
             ->withInput();
         }
     }
+
+    public function edit($id) {
+        $data['cat'] = DB::table('categories')->find($id);
+        return view('categories.edit', $data);
+    }
+
+    public function update() {
+        
+    }
 }
