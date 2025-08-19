@@ -13,4 +13,4 @@ Route::get('category/edit', [CategoryController::class, 'edit'])->name('category
 Route::get('category/create', [CategoryController::class, 'create'])->name('category.create');
 Route::post('category/save', [CategoryController::class, 'save'])->name('category.save');
 Route::get('category/edit/{id}', [ CategoryController::class, 'edit'])->name('category.edit');
-Route::put('category/update', [CategoryController::class, 'update'])->name('category.update');
+Route::post('category/update', [CategoryController::class, 'update'])->name('category.update');

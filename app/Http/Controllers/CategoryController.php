@@ -61,7 +61,20 @@ class CategoryController extends Controller
         return view('categories.edit', $data);
     }
 
-    public function update() {
-        
+    public function update(Request $r) {
+        $data = array(
+            'name' => $r->name
+        );
+        $x = DB::table('categories')
+            ->where('id', $r->id)
+            ->update($data);
+        if($x) {
+            return redirect()->route('category.index')
+                ->with('success', config('app.success'));
+        }
+        else{
+            return redirect()->route('category.edit',$r->id)
+                ->with('error', config('app.error'));
+        }
     }
 }
