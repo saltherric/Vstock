@@ -56,7 +56,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{route('role.index')}}" class="nav-link" {{$active=='category'?'active':''}}>
+                <a href="{{route('role.index')}}" class="nav-link {{$active=='role'?'active':''}}" >
                   <i class="fas fa-angle-right nav-icon"></i>
                   <p>Roles</p>
                 </a>

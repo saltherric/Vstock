@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Illuminate\Auth\Events\Validated;
 use View;
 
 class RoleController extends Controller
@@ -30,15 +31,29 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $r)
     {
-        //
+        $r -> validate([
+            'name' => 'required|min:2'
+        ]);
+        $data = array(
+            'name' => $r->name
+        );
+        $x = DB::table('roles')->insert($data);
+        if($x) {
+            return redirect()->route('role.create')
+                ->with('success', config('app.success'));
+        } else {
+            return redirect()->route('role.create')
+                ->with('error', config('app.error'))
+                ->withInput();
+        }
     }
 
     /**
