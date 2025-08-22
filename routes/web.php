@@ -18,4 +18,4 @@ Route::post('category/update', [CategoryController::class, 'update'])->name('cat
 
 // Resource route
 Route::resource('role', RoleController::class)->except(['show', 'destroy']);
-Route::get('role/delete', [RoleController::class, 'delete'])->name('role.delete');
+Route::get('role/delete/{id}', [RoleController::class, 'delete'])->name('role.delete');

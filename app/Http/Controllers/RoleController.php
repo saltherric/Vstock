@@ -56,13 +56,6 @@ class RoleController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -83,8 +76,18 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete($id)
     {
-        //
+        $x = DB::table('roles')
+            ->where ('id', $id)
+            ->update([
+                'active' => 0
+            ]);
+        if($x) {
+            session()->flash('success', config('app.del_success'));
+        } else {
+            session()->flash('error', config('app.del_error'));
+        }
+        return redirect()->route('role.index');
     }
 }
