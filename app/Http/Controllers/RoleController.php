@@ -60,17 +60,30 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $data['role'] = DB::table('roles')->find($id);
+        return view('roles.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $r, String $id)
     {
-        //
+        $data = array(
+            'name' => $r->name
+        );
+        $x = DB::table('roles')
+            ->where ('id', $id) 
+            ->update($data);
+        if($x) {    
+            return redirect()->route('role.index')
+                ->with('success', config('app.success'));
+        } else {
+            return redirect()->route('role.edit', $id)
+                ->with('error', config('app.error'));
+        }
     }
 
     /**

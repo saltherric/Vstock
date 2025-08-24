@@ -7,7 +7,7 @@
 @endsection
 @section('content')
 <p class="my-1">
-    <a href="{{route('category.index')}}" class="btn btn-success btn-sm">
+    <a href="{{route('role.index')}}" class="btn btn-success btn-sm">
         <i class="fas fa-reply"></i> Back
     </a>
 </p>

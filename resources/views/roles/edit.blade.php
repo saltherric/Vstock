@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-    Categories
+    Roles
 @endsection
 @section('page_title')
-    Categories
+    Roles
 @endsection
 @section('content')
 <p class="my-1">
-    <a href="{{route('category.index')}}" class="btn btn-success btn-sm">
+    <a href="{{route('role.index')}}" class="btn btn-success btn-sm">
         <i class="fas fa-reply"></i> Back
     </a>
 </p>
@@ -17,14 +17,14 @@
                 <div class="col-sm-6">
                     @component('coms.alert')
                     @endcomponent 
-                    <form action="{{route('category.update')}}" method="post">
+                    <form action="{{route('role.update', $role->id)}}" method="post">
                         @csrf 
-                        <input type="hidden" name="id" value="{{$cat->id}}">
+                        @method('PATCH')
                         <div class="form-group">
                             <label for="name">Name <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="name" name="name" required value="{{$cat->name}}">
+                            <input type="text" class="form-control" id="name" name="name" required value="{{$role->name}}">
                             <div class="mt-2">
-                                <a href="{{route('category.index')}}" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Cancel</a>
+                                <a href="{{route('role.index')}}" class="btn btn-danger btn-sm"><i class="fas fa-times"></i> Cancel</a>
                                 <button class="btn btn-primary btn-sm"><i class="fas fa-save"></i> Save</button>
                             </div>
                         </div>
