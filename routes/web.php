@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 //category
@@ -19,3 +20,7 @@ Route::post('category/update', [CategoryController::class, 'update'])->name('cat
 // Resource route
 Route::resource('role', RoleController::class)->except(['show', 'destroy']);
 Route::get('role/delete/{id}', [RoleController::class, 'delete'])->name('role.delete');
+
+// User resource route
+Route::resource('user', UserController::class)->except('show', 'destroy');
+Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');

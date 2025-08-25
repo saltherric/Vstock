@@ -3,15 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use DB;
+use View;
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        View::share('active', 'user');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $data['users'] = DB::table('users')
+            ->get();
+        return view('users.index', $data);
     }
 
     /**

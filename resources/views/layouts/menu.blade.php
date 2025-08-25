@@ -50,7 +50,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{route('user.index')}}" class="nav-link {{$active=='user'?'active':''}}">
                   <i class="fas fa-angle-right nav-icon"></i>
                   <p>Users</p>
                 </a>
