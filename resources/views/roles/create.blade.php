@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('title')
-    Create roles
+    Roles
 @endsection
 @section('page_title')
-    Create roles
+    Create role
 @endsection
 @section('content')
 <p class="my-1">

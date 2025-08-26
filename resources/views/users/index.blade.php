@@ -33,7 +33,14 @@
                     @forelse ($users as $user)
                        <tr>
                             <td>{{$i++}}</td>
+                            <td>
+                                <img src="{{asset($user->photo)}}" alt="" width="30">
+                            </td>
                             <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>{{$user->username}}</td>
+                            <td>{{$user->role}}</td>
+                            <td>{{$user->language}}</td>
                             <td>
                                 <a href="{{route('user.edit', $user->id)}}" class="btn btn-success btn-xs mr-1" title="Edit"><i class="fas fa-edit"></i></a>
                                 <a href="{{route('user.delete', $user->id)}}" class="btn btn-danger btn-xs" title="Delete" onclick="return confirm('You want to delete?')"><i class="fas fa-trash"></i></a>
@@ -42,7 +49,7 @@
                     @empty
                         <tr>
                             <td colspan="8">
-                                Users not found!
+                                No record found!
                             </td>
                         </tr>
                     @endforelse
