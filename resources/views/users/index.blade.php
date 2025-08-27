@@ -11,6 +11,12 @@
         <i class="fas fa-plus-circle"></i> Create
     </a>
 </p>
+<?php 
+    $langs = [
+        'en' => 'English',
+        'km' => 'ភាសាខ្មែរ'
+    ];
+?>
    <div class="card">
         <div class="card-body">
             @component('coms.alert')
@@ -40,7 +46,7 @@
                             <td>{{$user->email}}</td>
                             <td>{{$user->username}}</td>
                             <td>{{$user->role}}</td>
-                            <td>{{$user->language}}</td>
+                            <td>{{$user->language}} - {{$langs[$user->language]}}</td>
                             <td>
                                 <a href="{{route('user.edit', $user->id)}}" class="btn btn-success btn-xs mr-1" title="Edit"><i class="fas fa-edit"></i></a>
                                 <a href="{{route('user.delete', $user->id)}}" class="btn btn-danger btn-xs" title="Delete" onclick="return confirm('You want to delete?')"><i class="fas fa-trash"></i></a>

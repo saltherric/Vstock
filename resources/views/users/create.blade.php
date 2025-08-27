@@ -6,6 +6,10 @@
     Create user
 @endsection
 @section('content')
+@section('css')
+    <link rel="stylesheet" href="{{asset('/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/plugins/select2/css/select2.min.css')}}">
+@endsection
 <p class="my-1">
     <a href="{{route('user.index')}}" class="btn btn-success btn-sm">
         <i class="fas fa-reply"></i> Back
@@ -37,16 +41,24 @@
                         <div class="form-group row">
                             <label for="language" class="col-sm-3">Language</label>
                             <div class="col-sm-9">
-                                <select name="language" id="language" class="form-control">
-                                    <option value="en">English</option>
-                                    <option value="km">ភាសាខ្មែរ</option>
-                                </select>
+                                <div class="icheck-success d-inline mr-3">
+                                    <input type="radio" name="language" id="en" value="en" checked>
+                                    <label for="en">
+                                    English
+                                    </label>
+                                </div>
+                                <div class="icheck-success d-inline">
+                                    <input type="radio" name="language" id="km" value="km">
+                                    <label for="km">
+                                    ភាសាខ្មែរ
+                                    </label>
+                                </div>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="role_id" class="col-sm-3">Role</label>
                             <div class="col-sm-9">
-                                <select name="role_id" id="role_id" class="form-control">
+                                <select name="role_id" id="role_id" class="form-control select2">
                                     @foreach ($roles as $r) {
                                         <option value="{{$r->id}}">{{$r->name}}</option>
                                     }
@@ -94,7 +106,11 @@
     </div> 
 @endsection
 @section('js')
+<script src="{{asset('/plugins/select2/js/select2.full.min.js')}}"></script>
 <script>
+    $(document).ready(function(){
+        $('.select2').select2();
+    });
     function preview(event)
     {
         var img = document.getElementById('img');
