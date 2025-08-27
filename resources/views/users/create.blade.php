@@ -72,7 +72,11 @@
                         <div class="form-group row">
                             <label for="photo" class="col-sm-3">Photo</label>
                             <div class="col-sm-9">
-                                <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                                <input type="file" class="form-control" id="photo" name="photo" accept="image/*"
+                                onchange="preview(event)">
+                                <div class="mt-2">
+                                    <img src="" alt="" id="img" width="150">
+                                </div>
                                 <div class="mt-2">
                                     <button class="btn btn-primary btn-sm">
                                         <i class="fas fa-save"> Save</i>
@@ -88,4 +92,13 @@
             </form>
         </div>
     </div> 
+@endsection
+@section('js')
+<script>
+    function preview(event)
+    {
+        var img = document.getElementById('img');
+        img.src = URL.createObjectURL(event.target.files[0])
+    }
+</script>
 @endsection
