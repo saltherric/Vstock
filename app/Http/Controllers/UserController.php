@@ -69,27 +69,51 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $data['user'] = DB::table('users') -> find($id);
+        $data['roles'] = DB::table('roles')
+            ->where('active', 1)
+            ->get();
+        return view('users.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $r, string $id)
     {
-        //
+        $r->validate([
+            'name' => 'required|min:3',
+            'role_id' => 'required|numeric',
+            'language' => 'required|max:2',
+            'photo' => 'nullable|image'
+        ]);
+        $data = array(
+            'name' => $r->name,
+            'email' => $r->email,
+            'language' => $r->language,
+            'role_id' => $r->role_id
+        );
+        if($r->password!='') {
+            $data['password'] = bcrypt($r->password);
+        }
+        if($r->photo) {
+            $data['photo'] = $r->file('photo')->store('upload/users', 'custom');
+        }
+        $x = DB::table('users')
+            ->where('id', $id)
+            ->update($data);
+        if($x) {
+            return redirect()->route('user.index')
+                ->with('success', config('app.success'));
+        }
+        else {
+            return redirect()->route('user.edit', $id)
+                ->with('error', config('app.error'));
+        }
     }
 
     /**
