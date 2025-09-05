@@ -119,8 +119,41 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function delete(string $id)
     {
-        //
+        $user = DB::table('users')->find($id);
+        $x = DB::table('users') 
+            ->where('id',$id)
+            ->delete();
+        if($x) {
+            @unlink($user->photo);
+            return redirect()->route('user.index')
+                ->with('success', config('app.success'));
+        }
+        else {
+            return redirect()->route('user.index')
+                ->with('error', config('app.error'));
+        }
+    }
+
+    public function change_password(Request $r) {
+        $r->validate([
+            'password' => 'required|min:3'
+        ]);
+
+        $data = array(
+            'password' => bcrypt($r->password)
+        );
+        $x = DB::table('users') 
+            ->where('id', $r->user_id)
+            ->update($data);
+        if($x) {
+            return redirect()->route('user.index')
+                ->with('success', config('app.success'));
+        }
+        else {
+            return redirect()->route('user.index')
+                ->with('error', config('app.error'));
+        }
     }
 }

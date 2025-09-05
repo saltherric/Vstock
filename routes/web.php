@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -24,3 +23,4 @@ Route::get('role/delete/{id}', [RoleController::class, 'delete'])->name('role.de
 // User resource route
 Route::resource('user', UserController::class)->except('show', 'destroy');
 Route::get('user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
+Route::post('user/change_password', [UserController::class, 'change_password'])->name('user.change_password');
