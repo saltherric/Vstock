@@ -1,6 +1,6 @@
   <?php
     $settings = array(
-      'category', 'user', 'role'
+      'category', 'user', 'role', 'company'
     );
   ?>
   <!-- Main Sidebar Container -->
@@ -43,6 +43,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
+              <li class="nav-item}}" >
+                <a href="{{route('company.index')}}" class="nav-link {{$active=='company'?'active':''}}" >
+                  <i class="fas fa-angle-right nav-icon"></i>
+                  <p>Company info</p>
+                </a>
+              </li>
               <li class="nav-item}}" >
                 <a href="{{route('category.index')}}" class="nav-link {{$active=='category'?'active':''}}" >
                   <i class="fas fa-angle-right nav-icon"></i>
